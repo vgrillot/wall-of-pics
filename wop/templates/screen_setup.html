@@ -8,7 +8,7 @@
 
 <h1>{{ ss.name }}</h1>
 <ul>
-{% for s in screens %}
+{% for s in ss.screen_set.all %}
   <li>
         <a href="{% url 'screen_detail' s.id %}"> {{ s.name }}</a>
   </li>

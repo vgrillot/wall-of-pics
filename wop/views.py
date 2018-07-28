@@ -12,8 +12,7 @@ def screen_setup_list_view(request):
 def screen_setup_detail_view(request, screen_setup_id):
     ss = get_object_or_404(ScreenSetup, pk=screen_setup_id)
     context = {
-        'ss': ss,
-        'screens': ss.screen_set.all(),
+        'ss': ss
     }
     return render(request, 'screen_setup.html', context)
 
