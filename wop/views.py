@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import *
+from .forms import *
 
 
 def screen_setup_list_view(request):
@@ -17,9 +18,16 @@ def repo_list_view(request):
 
 
 def image_repo_detail_view(request, image_repo_id):
-    image_repo = get_object_or_404(ImageRepo, pk=image_repo_id)
+    if request.method == 'GET':
+        image_repo = get_object_or_404(ImageRepo, pk=image_repo_id)
+        form = ImageRepoForm(instance=image_repo)
+    elif request.method == 'POST':
+        if image_repo_id:
+            image_repo = get_object_or_404(ImageRepo, pk=image_repo_id)
+        form = ImageRepoForm(request.POST, instance=image_repo)
+        image_repo = form.save()
     context = {
-        'image_repo': image_repo
+        'form': form
     }
     return render(request, 'image_repo.html', context)
 

@@ -5,12 +5,12 @@
     <title>{{ image_repo.name }} | WoP </title>
 </head>
 <body>
-<h1>{{ image_repo.name }}</h1>
-<table>
-    <tr>
-        <th>Path</th>
-        <td>{{ image_repo.path }}</td>
-    </tr>
-</table>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+
 </body>
 </html>
