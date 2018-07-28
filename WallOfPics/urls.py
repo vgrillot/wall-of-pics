@@ -15,10 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from wop import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.screen_setup_list_view, name='index'),
     path('wop/', include('wop.urls'))
 ]
