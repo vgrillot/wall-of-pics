@@ -5,6 +5,9 @@ class ScreenSetup(models.Model):
     """Set of screens"""
     name = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.name
+
 
 class Screen(models.Model):
     """Physical screen description
@@ -15,11 +18,17 @@ class Screen(models.Model):
     # screen information
     ratio = models.FloatField()  # X/Y
 
+    def __str__(self):
+        return self.name
+
 
 class ImageRepo(models.Model):
     """Physical and local directoy to store image"""
     name = models.CharField(max_length=40)
     path = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.name
 
 
 class SlideShow(models.Model):
@@ -27,10 +36,16 @@ class SlideShow(models.Model):
     name = models.CharField(max_length=40)
     repos = models.ManyToManyField(ImageRepo)
 
+    def __str__(self):
+        return self.name
+
 
 class Tag(models.Model):
     """Tag information about images"""
     name = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.name
 
 
 class Image(models.Model):
@@ -51,6 +66,9 @@ class Image(models.Model):
     #  descriptive informations
     tags = models.ManyToManyField(Tag)
 
+    def __str__(self):
+        return self.path
+
 
 class Wall(models.Model):
     """A wall is the top entry level, kind of a project,
@@ -59,5 +77,8 @@ class Wall(models.Model):
     name = models.CharField(max_length=50)
     screen_setup = models.ForeignKey(ScreenSetup, on_delete=models.CASCADE)
     slide_show = models.ForeignKey(SlideShow, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 
