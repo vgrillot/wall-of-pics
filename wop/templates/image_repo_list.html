@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image repositories | WoP </title>
+</head>
+<body>
+<h1>Image repositories</h1>
+<ul>
+{% for ir in image_repos %}
+    <li><a href="{% url 'image_repo_detail' ir.id %}"> {{ ir.name }}</a></li>
+{% endfor %}
+</ul>
+</body>
+</html>
