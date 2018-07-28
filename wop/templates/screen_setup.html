@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ ss.name }} | WoP </title>
+</head>
+<body>
+
+<h1>{{ ss.name }}</h1>
+<ul>
+{% for s in screens %}
+  <li>
+        <a href="{% url 'screen_detail' s.id %}"> {{ s.name }}</a>
+  </li>
+{% endfor %}
+</ul>
+
+</body>
+</html>

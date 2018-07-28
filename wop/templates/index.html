@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wall of pics</title>
+</head>
+<body>
+
+<h1>Screen setup list</h1>
+<ul>
+{% for ss in screen_setups %}
+  <li>
+        <a href="{% url 'screen_setup_detail' ss.id %}"> {{ ss.name }}</a>
+  </li>
+{% endfor %}
+</ul>
+
+</body>
+</html>

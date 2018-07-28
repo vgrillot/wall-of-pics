@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from wop import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.screen_setup_list_view, name='index'),
+    path('wop/screen_setup/<int:screen_setup_id>/', views.screen_setup_detail_view, name='screen_setup_detail'),
+    path('wop/screen/<int:screen_id>/', views.screen_detail_view, name='screen_detail'),
+
 ]
