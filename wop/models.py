@@ -19,7 +19,7 @@ class Screen(models.Model):
 class ImageRepo(models.Model):
     """Physical and local directoy to store image"""
     name = models.CharField(max_length=40)
-    path = models.CharField(ml=500)
+    path = models.CharField(max_length=500)
 
 
 class SlideShow(models.Model):
@@ -30,7 +30,7 @@ class SlideShow(models.Model):
 
 class Tag(models.Model):
     """Tag information about images"""
-    name = models.CharField(10)
+    name = models.CharField(max_length=10)
 
 
 class Image(models.Model):
