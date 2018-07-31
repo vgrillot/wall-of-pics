@@ -1,6 +1,9 @@
 Background tasks and async notification
 =======================================
 
+[Workers, Queues, and Tasks](https://djangopackages.org/grids/g/workers-queues-tasks/)
+
+
 Celery
 ------
 [Using Celery With Django for Background Task Processing](https://code.tutsplus.com/tutorials/using-celery-with-django-for-background-task-processing--cms-28732)
