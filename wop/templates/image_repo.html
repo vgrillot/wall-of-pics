@@ -1,3 +1,9 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +14,17 @@
 
 <form action="" method="post">
     {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit" />
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" name="submit" value="save" class="btn btn-primary">{% bootstrap_icon "floppy-save" %}Save</button>
+    {% endbuttons %}
+</form>
+<form action="{% url 'image_repo_scan' image_repo_id=image_repo.id %}" method="post">
+    {% csrf_token %}
+{#    {% bootstrap_form form %}#}
+    {% buttons %}
+        <button type="submit" name="submit" value="scan" class="btn btn-default">{% bootstrap_icon "folder-open" %}Scan</button>
+    {% endbuttons %}
 </form>
 
 </body>

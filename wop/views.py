@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import *
+
 from .forms import *
 
 
@@ -22,10 +22,21 @@ def image_repo_detail_view(request, image_repo_id):
         image_repo = get_object_or_404(ImageRepo, pk=image_repo_id)
         form = ImageRepoForm(instance=image_repo)
     elif request.method == 'POST':
-        if image_repo_id:
-            image_repo = get_object_or_404(ImageRepo, pk=image_repo_id)
-        form = ImageRepoForm(request.POST, instance=image_repo)
-        image_repo = form.save()
+        image_repo = get_object_or_404(ImageRepo, pk=image_repo_id) if image_repo_id else None
+        if request.POST['submit'] == 'save':
+            form = ImageRepoForm(request.POST, instance=image_repo)
+            form.save()
+        elif request.POST['submit'] == 'scan':
+            pass
+    context = {
+        'form': form
+    }
+    return render(request, 'image_repo.html', context)
+
+
+def image_repo_scan(request, image_repo_id):
+    if request.method == 'POST':
+        image_repo = get_object_or_404(ImageRepo, pk=image_repo_id)
     context = {
         'form': form
     }
