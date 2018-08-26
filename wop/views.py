@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http.response import HttpResponseForbidden
 from .forms import *
+from wop.tools.scan_repo import scan_repo
 
 
 def screen_setup_list_view(request):
@@ -39,9 +40,10 @@ def image_repo_scan(request, image_repo_id):
     if request.method != 'POST':
         return HttpResponseForbidden("GET not allowed")
     image_repo = get_object_or_404(ImageRepo, pk=image_repo_id)
-    pass  # TODO:do the scan...
+    new_images = scan_repo(image_repo)
     context = {
-        'image_repo': image_repo
+        'image_repo': image_repo,
+        'new_images': new_images,
     }
     return render(request, 'image_repo_scan.html', context)
 

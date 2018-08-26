@@ -13,7 +13,15 @@
 <body>
 
 <h1> {{ image_repo.name }} scan results </h1><br>
-...<br>
+<h2> New images found:</h2>
+<table>
+    <thead><tr><td>filename</td></tr></thead>
+    <tbody>
+        {% for image in new_images %}
+        <tr><td>{{ image.path }}</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 </body>
-</html>+
+</html>

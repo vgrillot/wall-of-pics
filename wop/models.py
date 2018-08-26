@@ -52,16 +52,17 @@ class Image(models.Model):
     """Information about an image"""
     path = models.CharField(max_length=500, null=False)
     repo = models.ForeignKey(ImageRepo, on_delete=models.CASCADE)
+    key = models.CharField(max_length=20, null=False, unique=True, default="UNSET")
     # image information
     # analysed : True when the file will be anlysed to extract meta
     analysed = models.BooleanField(default=False)
-    width = models.IntegerField()
-    height = models.IntegerField()
-    ratio = models.FloatField()  # X/Y
+    width = models.IntegerField(null=True)
+    height = models.IntegerField(null=True)
+    ratio = models.FloatField(null=True)  # X/Y
     monochrome = models.BooleanField(default=False)  # True if the image is monochrome
     b_w = models.BooleanField(default=False)  # True of the image is (almost) black and white
     # file information
-    file_date = models.DateTimeField()
+    file_date = models.DateTimeField(null=True)
     scan_date = models.DateTimeField()
     #  descriptive informations
     tags = models.ManyToManyField(Tag)
