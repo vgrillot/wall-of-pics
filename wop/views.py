@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-
+from django.http.response import HttpResponseForbidden
 from .forms import *
 
 
@@ -26,21 +26,24 @@ def image_repo_detail_view(request, image_repo_id):
         if request.POST['submit'] == 'save':
             form = ImageRepoForm(request.POST, instance=image_repo)
             form.save()
-        elif request.POST['submit'] == 'scan':
-            pass
+        # elif request.POST['submit'] == 'scan':
+        #     form = ImageRepoForm(instance=image_repo)
     context = {
-        'form': form
+        'form': form,
+        'image_repo': image_repo,
     }
     return render(request, 'image_repo.html', context)
 
 
 def image_repo_scan(request, image_repo_id):
-    if request.method == 'POST':
-        image_repo = get_object_or_404(ImageRepo, pk=image_repo_id)
+    if request.method != 'POST':
+        return HttpResponseForbidden("GET not allowed")
+    image_repo = get_object_or_404(ImageRepo, pk=image_repo_id)
+    pass  # TODO:do the scan...
     context = {
-        'form': form
+        'image_repo': image_repo
     }
-    return render(request, 'image_repo.html', context)
+    return render(request, 'image_repo_scan.html', context)
 
 
 def screen_setup_detail_view(request, screen_setup_id):
