@@ -47,6 +47,7 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+import os
 
 class Image(models.Model):
     """Information about an image"""
@@ -69,6 +70,9 @@ class Image(models.Model):
 
     def __str__(self):
         return self.path
+
+    def filename(self):
+        return os.path.basename(self.path)
 
 
 class Wall(models.Model):

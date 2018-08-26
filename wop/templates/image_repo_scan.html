@@ -12,13 +12,24 @@
 </head>
 <body>
 
+
 <h1> {{ image_repo.name }} scan results </h1><br>
+<table><tr><th>Path</th><td>{{ image_repo.path }}</td></tr></table>
+
+
 <h2> New images found:</h2>
 <table>
-    <thead><tr><td>filename</td></tr></thead>
+    <thead><tr><th>filename</th><th>image</th></tr></thead>
     <tbody>
         {% for image in new_images %}
-        <tr><td>{{ image.path }}</td></tr>
+        <tr>
+            <td>{{ image.filename }}</td>
+            <td>
+                <a href="{% url 'image' image.key %}">
+                    <img src="{% url 'image' image.key %}" width="100px" height="100px">
+                </a>
+            </td>
+        </tr>
         {% endfor %}
     </tbody>
 </table>

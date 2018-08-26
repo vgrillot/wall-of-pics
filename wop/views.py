@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http.response import HttpResponseForbidden
+from django.http import HttpResponse
 from .forms import *
 from wop.tools.scan_repo import scan_repo
 
@@ -66,4 +67,11 @@ def screen_detail_view(request, screen_id):
 
 def config_view(request):
     return render(request, 'config.html')
+
+
+def img(request, key):
+    """serve a pic as is from its key"""
+    image = get_object_or_404(Image, key=key)
+    with open(image.path, "rb") as f:
+        return HttpResponse(f.read(), content_type="image/jpeg")
 
