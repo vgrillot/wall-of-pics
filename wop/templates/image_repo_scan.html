@@ -25,8 +25,8 @@
         <tr>
             <td>{{ image.filename }}</td>
             <td>
-                <a href="{% url 'image' image.key %}">
-                    <img src="{% url 'image' image.key %}" width="100px">
+                <a href="{% url 'image' image.id %}">
+                    <img src="{% url 'img' image.key %}" width="100px">
                 </a>
             </td>
         </tr>

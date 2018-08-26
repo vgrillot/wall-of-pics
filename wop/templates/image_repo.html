@@ -30,7 +30,7 @@
 <h1>content</h1>
 <div>
 {% for i in image_repo.image_set.all %}
-    <a href="{% url 'image' i.id %}"><img src="{% url 'img' i.key %}"  width="100"></a>
+    <a href="{% url 'image' i.id %}"><img src="{% url 'img' i.key %}"  height="100"></a>
 {% endfor %}
 </div>
 

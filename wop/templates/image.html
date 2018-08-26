@@ -5,7 +5,7 @@
     <title>{{ image.filename }}</title>
 </head>
 <body>
-<h1>{{ image.filename }}</h1>
+<h1>Properties</h1>
 <table>
     <tr>
         <th>path</th>
@@ -13,6 +13,10 @@
     </tr>
     <tr><th>Repo</th><td>{{ image.repo.name }}</td></tr>
 </table>
-<img src="{% url 'img' image.key %} " width="25%">
+<br>
+<h1>Image</h1>
+<a href="{% url 'img' image.key %}">
+    <img src="{% url 'img' image.key %} " width="25%">
+</a>
 </body>
 </html>
