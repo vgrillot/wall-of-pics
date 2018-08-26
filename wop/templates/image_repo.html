@@ -27,5 +27,12 @@
     {% endbuttons %}
 </form>
 
+<h1>content</h1>
+<div>
+{% for i in image_repo.image_set.all %}
+    <a href="{% url 'image' i.id %}"><img src="{% url 'img' i.key %}"  width="100"></a>
+{% endfor %}
+</div>
+
 </body>
 </html>

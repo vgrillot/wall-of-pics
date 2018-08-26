@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ image.filename }}</title>
+</head>
+<body>
+<h1>{{ image.filename }}</h1>
+<table>
+    <tr>
+        <th>path</th>
+        <td>{{ image.path }}</td>
+    </tr>
+    <tr><th>Repo</th><td>{{ image.repo.name }}</td></tr>
+</table>
+<img src="{% url 'img' image.key %} " width="25%">
+</body>
+</html>

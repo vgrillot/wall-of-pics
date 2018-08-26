@@ -75,3 +75,10 @@ def img(request, key):
     with open(image.path, "rb") as f:
         return HttpResponse(f.read(), content_type="image/jpeg")
 
+
+def image(request, image_id):
+    img = get_object_or_404(Image, pk=image_id)
+    context = {
+        'image': img,
+    }
+    return render(request, 'image.html', context)

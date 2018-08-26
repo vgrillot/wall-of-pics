@@ -11,5 +11,6 @@ urlpatterns = [
     path('image_repo/', views.repo_list_view, name='image_repo_list'),
     path('image_repo/<int:image_repo_id>/', views.image_repo_detail_view, name='image_repo_detail'),
     path('image_repo/<int:image_repo_id>/scan/', views.image_repo_scan, name='image_repo_scan'),
-    path('img/<str:key>/', views.img, name='image'),
+    path('img/<str:key>/', views.img, name='img'),
+    path('image/<int:image_id>/', views.image, name='image'),
 ]
