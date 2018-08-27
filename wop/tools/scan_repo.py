@@ -82,4 +82,4 @@ def isblack(file):
             return True
         else:
             #don't know
-            return None
+            return False

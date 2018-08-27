@@ -22,7 +22,6 @@ def select_next_pic(wall: models.Wall, screen: models.Screen):
     else:
         filter = 'ratio__lte'
 
-
     # **{filter:value} tip: https://stackoverflow.com/questions/4720079/django-query-filter-with-variable-column
     images = repo.image_set \
         .filter(**{filter: 1.0}) \
