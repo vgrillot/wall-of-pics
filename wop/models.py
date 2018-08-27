@@ -66,6 +66,10 @@ class Image(models.Model):
     # file information
     file_date = models.DateTimeField(null=True)
     scan_date = models.DateTimeField()
+    # view information
+    view_count = models.IntegerField(null=False, default=0)
+    last_view = models.DateTimeField(null=True)
+
     #  descriptive information
     tags = models.ManyToManyField(Tag)
 
