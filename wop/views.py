@@ -25,11 +25,11 @@ def image_repo_detail_view(request, image_repo_id):
         form = ImageRepoForm(instance=image_repo)
     elif request.method == 'POST':
         image_repo = get_object_or_404(ImageRepo, pk=image_repo_id) if image_repo_id else None
-        if request.POST['submit'] == 'save':
-            form = ImageRepoForm(request.POST, instance=image_repo)
-            form.save()
-        # elif request.POST['submit'] == 'scan':
-        #     form = ImageRepoForm(instance=image_repo)
+        form = ImageRepoForm(request.POST, instance=image_repo)
+        form.save()
+    else:
+        return HttpResponseForbidden("Method not allowed")
+
     context = {
         'form': form,
         'image_repo': image_repo,
@@ -39,7 +39,7 @@ def image_repo_detail_view(request, image_repo_id):
 
 def image_repo_scan(request, image_repo_id):
     if request.method != 'POST':
-        return HttpResponseForbidden("GET not allowed")
+        return HttpResponseForbidden("Method not allowed")
     image_repo = get_object_or_404(ImageRepo, pk=image_repo_id)
     new_images = scan_repo(image_repo)
     context = {
@@ -78,9 +78,9 @@ def img(request, key):
 
 def image(request, image_id):
     """image detail view"""
-    img = get_object_or_404(Image, pk=image_id)
+    i = get_object_or_404(Image, pk=image_id)
     context = {
-        'image': img,
+        'image': i,
     }
     return render(request, 'image_detail.html', context)
 
