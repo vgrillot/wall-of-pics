@@ -3,6 +3,7 @@ from django.http.response import HttpResponseForbidden
 from django.http import HttpResponse
 from .forms import *
 from wop.tools.scan_repo import scan_repo
+from wop.tools.next_pic import select_next_pic
 
 
 def screen_setup_list_view(request):
