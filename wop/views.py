@@ -62,7 +62,7 @@ def screen_detail_view(request, screen_id):
     context = {
         's': s
     }
-    return render(request, 'screen.html', context)
+    return render(request, 'screen_detail.html', context)
 
 
 def config_view(request):
@@ -71,14 +71,24 @@ def config_view(request):
 
 def img(request, key):
     """serve a pic as is from its key"""
-    image = get_object_or_404(Image, key=key)
-    with open(image.path, "rb") as f:
+    i = get_object_or_404(Image, key=key)
+    with open(i.path, "rb") as f:
         return HttpResponse(f.read(), content_type="image/jpeg")
 
 
 def image(request, image_id):
+    """image detail view"""
     img = get_object_or_404(Image, pk=image_id)
     context = {
         'image': img,
     }
-    return render(request, 'image.html', context)
+    return render(request, 'image_detail.html', context)
+
+
+def scr(request, screen_id):
+    """screen renderer"""
+    screen = get_object_or_404(Screen, pk=screen_id)
+    context = {
+        'screen': screen
+    }
+    return render(request, 'screen.html', context)

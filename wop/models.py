@@ -1,4 +1,5 @@
 from django.db import models
+import os
 
 
 class ScreenSetup(models.Model):
@@ -14,6 +15,7 @@ class Screen(models.Model):
        Even it's more a description of each different browser window
     """
     name = models.CharField(max_length=20)
+    # key = models.CharField(max_length=20, null=True, unique=True, default="UNSET")
     screen_setup = models.ForeignKey(ScreenSetup, on_delete=models.CASCADE)
     # screen information
     ratio = models.FloatField()  # X/Y
@@ -46,8 +48,6 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
-
-import os
 
 class Image(models.Model):
     """Information about an image"""

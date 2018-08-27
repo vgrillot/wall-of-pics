@@ -5,10 +5,17 @@
     <title>{{ s.name }} | WoP </title>
 </head>
 <body>
-
-
 <h1>{{ s.name }}</h1>
+<table>
+    <tr>
+        <th>Ratio</th>
+        <td>{{ s.ratio }}</td>
+    </tr>
+</table>
 
+<br><br>
+
+<a href="{% url 'scr' s.id %}">Go to screen...</a>
 
 </body>
 </html>
