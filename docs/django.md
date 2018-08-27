@@ -27,3 +27,4 @@ https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Sessions
 database
 --------
 n-to-n relation with fields: https://stackoverflow.com/questions/4443190/djangos-manytomany-relationship-with-additional-fields
+https://medium.com/@hansonkd/the-dramatic-benefits-of-django-subqueries-and-annotations-4195e0dafb16
