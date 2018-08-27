@@ -19,7 +19,12 @@
 
 <h2> New images found:</h2>
 <table>
-    <thead><tr><th>filename</th><th>image</th></tr></thead>
+    <thead><tr>
+        <th>filename</th>
+        <th>image</th>
+        <th>b&w</th>
+        <th>size</th>
+    </tr></thead>
     <tbody>
         {% for image in new_images %}
         <tr>
@@ -29,6 +34,8 @@
                     <img src="{% url 'img' image.key %}" width="100px">
                 </a>
             </td>
+        <td>{{ image.b_w }}</td>
+        <td>{{ image.ratio }}<br>{{ image.width }} : {{ image.height }}</td>
         </tr>
         {% endfor %}
     </tbody>
