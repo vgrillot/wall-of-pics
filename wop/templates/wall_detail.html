@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ w.name }} | WoP </title>
+</head>
+<body>
+<h1>{{ wall.name }}</h1>
+<table>
+    <tr>
+        <th>Screen setup</th>
+        <td><a href="{% url "screen_detail" wall.screen_setup_id %}">{{ wall.screen_setup.name }}</a></td>
+    </tr>
+    <tr>
+        <th>Slide show</th>
+        <td>{{ wall.slide_show.name }} </td>
+    </tr>
+    <tr>
+        <th>Status</th>
+        <td>{{ wall.status }}</td>
+    </tr>
+</table>
+</body>
+</html>

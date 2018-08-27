@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wall of pics</title>
+</head>
+<body>
+
+<h1>Wall setup list</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for w in walls %}
+    <tr>
+        <td><a href="{% url "wall_detail" w.id %}">{{ w.name }}</a> </td>
+        <td>{{ w.status }}</td>
+        <td>
+            <a href="{% url "wall_action" w.id %}?action=play">PLAY</a>
+            -
+            <a href="{% url "wall_action" w.id %}?action=stop">STOP</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

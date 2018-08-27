@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http.response import HttpResponseForbidden
 from django.http import HttpResponse
 from .forms import *
@@ -92,3 +92,33 @@ def scr(request, screen_id):
         'screen': screen
     }
     return render(request, 'screen.html', context)
+
+
+def wall_list_view(request):
+    context = {
+        'walls': Wall.objects.all()
+    }
+    return render(request, 'wall_list.html', context)
+
+
+def wall_detail_view(request, wall_id):
+    wall = get_object_or_404(Wall, pk=wall_id)
+    context = {
+        'wall': wall,
+    }
+    return render(request, 'wall_detail.html', context)
+
+
+def wall_action_view(request, wall_id):
+    wall = get_object_or_404(Wall, pk=wall_id)
+    status = request.GET['action'].upper()
+    if status == 'PLAY':
+        # stop other running walls on the same screen setup
+        walls = Wall.objects.filter(status='PLAY', screen_setup=wall.screen_setup)
+        for w in walls:
+            w.status = 'STOP'
+            w.save()
+    wall.status = status
+    wall.save()
+    return redirect('wall_list')
+

@@ -83,6 +83,7 @@ class Wall(models.Model):
     name = models.CharField(max_length=50)
     screen_setup = models.ForeignKey(ScreenSetup, on_delete=models.CASCADE)
     slide_show = models.ForeignKey(SlideShow, on_delete=models.CASCADE)
+    status = models.CharField(max_length=4, null=False, default='NONE')
 
     def __str__(self):
         return self.name
