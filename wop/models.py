@@ -25,7 +25,7 @@ class Screen(models.Model):
 
 
 class ImageRepo(models.Model):
-    """Physical and local directoy to store image"""
+    """Physical and local directory to store image"""
     name = models.CharField(max_length=40)
     path = models.CharField(max_length=500)
 
@@ -49,13 +49,14 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+
 class Image(models.Model):
     """Information about an image"""
     path = models.CharField(max_length=500, null=False)
     repo = models.ForeignKey(ImageRepo, on_delete=models.CASCADE)
     key = models.CharField(max_length=20, null=False, unique=True, default="UNSET")
     # image information
-    # analysed : True when the file will be anlysed to extract meta
+    # analysed : True when the file will be analysed to extract meta
     analysed = models.BooleanField(default=False)
     width = models.IntegerField(null=True)
     height = models.IntegerField(null=True)
@@ -65,7 +66,7 @@ class Image(models.Model):
     # file information
     file_date = models.DateTimeField(null=True)
     scan_date = models.DateTimeField()
-    #  descriptive informations
+    #  descriptive information
     tags = models.ManyToManyField(Tag)
 
     def __str__(self):
@@ -85,5 +86,3 @@ class Wall(models.Model):
 
     def __str__(self):
         return self.name
-
-
