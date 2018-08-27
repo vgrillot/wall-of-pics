@@ -9,7 +9,9 @@
 <h1>PLAYING {{ wall.name }}...</h1>
 <div>{{ screen.name }}</div>
 <div>{{ wall.status }}</div>
+{% if image %}
 <div><img src="{% url "img" image.key %}"></div>
+{% endif %}
 
 
 </body>
