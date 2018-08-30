@@ -2,17 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ s.name }} | WoP </title>
+    <title>{{ sreen.name }} | {{ wall.name }} | WoP </title>
 </head>
 <body>
-
-<h1>PLAYING {{ wall.name }}...</h1>
-<div>{{ screen.name }}</div>
-<div>{{ wall.status }}</div>
 {% if image %}
-<div><img src="{% url "img" image.key %}"></div>
+    <div><img src="{% url "img" image.key %}"></div>
+{%  else %}
+    <div>Nothing to display</div>
 {% endif %}
-
-
 </body>
 </html>
