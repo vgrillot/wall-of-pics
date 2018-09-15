@@ -10,7 +10,7 @@ from random import randint
 from datetime import datetime
 
 
-def select_next_pic(wall: models.Wall, screen: models.Screen):
+def select_next_pic(wall: models.Wall, screen: models.Screen) -> models.Image:
     """return the next pic"""
     repos = wall.slide_show.repos.all()
     index = randint(0, repos.count() - 1)

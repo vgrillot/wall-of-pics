@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ screen.name }} | {{ wall.name }} | WoP </title>
+    <script src="{% static "js/jquery-3.3.1.js" %}"></script>
+    <script>
+        var timeout;
+
+        function loadNextPic() {
+            var url="{% url "scr_next_image"  screen.id %}";
+            {#var $next_image = $("<img>") ; //new Image();#}
+            //$("img").load(function() {
+            //    {#$("#wop_image").replace("#wop_image")#}
+            //}).attr({
+            d = new Date();
+            $("img").attr({
+                src : url + "?" + d.getTime()
+            });
+            //alert("loadnp!");
+        }
+
+        function startTimer() {
+            timeout = setInterval(loadNextPic, 5000);
+        }
+
+        function stopTimer() {
+            clearInterval(timeout);
+        }
+
+        $(document).ready(function() {
+            $("img").fadeIn(3000);
+            timeout = setInterval(loadNextPic, 5000);
+        });
+
+    </script>
+</head>
+<body bgcolor="black">
+<div>
+    <button onclick="startTimer()">start</button>
+    <button onclick="stopTimer()">stop</button>
+    <button onclick="loadNextPic()">tick</button>
+</div>
+<div id="wop_content" align="center">
+    <img id="wop_image" hidden="True" src="{% static "mire2.jpg" %}">
+</div>
+</body>
+</html>
+
+
+<!--
+https://learn.jquery.com/using-jquery-core/
+https://www.w3schools.com/jquery/jquery_ref_events.asp
+https://www.w3schools.com/howto/howto_js_slideshow.asp
+https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+https://stackoverflow.com/questions/10863658/load-image-with-jquery-and-append-it-to-the-dom
+
+
+
+
+-->

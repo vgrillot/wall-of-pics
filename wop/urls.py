@@ -24,4 +24,8 @@ urlpatterns = [
 
     path('scr/<int:screen_id>/', views.scr, name='scr'),
     path('img/<str:key>/', views.img, name='img'),
+
+    path('scr/<int:screen_id>/image/', views.scr_next_image, name='scr_next_image'),
+
+
 ]
